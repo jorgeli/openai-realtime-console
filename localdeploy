@@ -1,0 +1,3 @@
+
+
+docker run --rm -it -p 3000:3000 --env-file .env openai-realtime-console

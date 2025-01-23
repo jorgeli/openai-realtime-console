@@ -1,24 +1,24 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "node server.js --dev",
-    "start": "node server.js",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --outDir dist/client --ssrManifest",
-    "build:server": "vite build --outDir dist/server --ssr /index.js",
+    "dev": "cross-env NODE_ENV=development node server.js --dev",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "devinstall": "zx ../../devinstall.mjs -- node server.js --dev",
-    "lint": "eslint . --ext .js,.jsx --fix"
+    "lint": "eslint . --ext .js,.jsx --fix",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@fastify/env": "^4.4.0",
     "@fastify/one-line-logger": "^1.2.0",
-    "@fastify/react": "^0.6.0",
-    "@fastify/vite": "^6.0.5",
+    "@fastify/static": "^6.12.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "fastify": "^4.24.3",
     "history": "^5.3.0",
     "minipass": "^7.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.20.0",
@@ -26,11 +26,20 @@
     "valtio": "^1.12.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.0",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^8.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.0.0",
     "postcss": "^8.4.31",
     "postcss-nesting": "^12.0.2",
     "postcss-preset-env": "^7.7.1",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.0.2"
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^4.0.0"
   }
 }
